@@ -6,10 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.mike.database_room.data.datasourceimplementation.database.AppTrackerRoomDatabaseImpl.Companion.DB_VERSION
 import com.mike.database_room.domain.datasourceabstraction.database.AppTrackerRoomDatabase
+import com.mike.database_room.domain.entity.PopularMovieEntity
 
 @Database(
     entities = [
-
+        PopularMovieEntity::class
     ],
     version = DB_VERSION,
 )
