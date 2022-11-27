@@ -12,10 +12,10 @@ interface MovieRepository: BasicLocalRepository<PopularMovie> {
     // REMOTE METHODS
 
     suspend fun fetchPopularMovies(
-        authHeader: String,
+        language: String,
         page: String,
-        scope: String,
-        language: String
+        authHeader: String,
+        scope: String
     ) :Result<List<PopularMovie>>
 
 }
