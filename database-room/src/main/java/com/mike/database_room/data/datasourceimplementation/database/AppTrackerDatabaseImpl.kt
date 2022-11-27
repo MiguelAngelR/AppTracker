@@ -4,7 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.mike.database_room.data.datasourceimplementation.database.AppTrackerRoomDatabaseImpl.Companion.DB_VERSION
+import com.mike.database_room.domain.converter.MovieTypeConverter
 import com.mike.database_room.domain.datasourceabstraction.database.AppTrackerRoomDatabase
 import com.mike.database_room.domain.entity.PopularMovieEntity
 
@@ -14,6 +16,7 @@ import com.mike.database_room.domain.entity.PopularMovieEntity
     ],
     version = DB_VERSION,
 )
+@TypeConverters(MovieTypeConverter::class)
 internal abstract class AppTrackerRoomDatabaseImpl: RoomDatabase(), AppTrackerRoomDatabase {
 
     companion object {

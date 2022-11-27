@@ -29,10 +29,10 @@ internal class MovieRepositoryImpl(
     override suspend fun findById(id: String): PopularMovie? = localMovieDataSource.findById(id)
 
     override suspend fun fetchPopularMovies(
-        authHeader: String,
+        language: String,
         page: String,
-        scope: String,
-        language: String
+        authHeader: String,
+        scope: String
     ): Result<List<PopularMovie>> = withContext(coroutineDispatcher) {
         remoteMoviesDataSource.fetchPopularMovies(
             authHeader = authHeader,
