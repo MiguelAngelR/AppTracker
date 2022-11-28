@@ -16,3 +16,4 @@ rootProject.name = "AppTracker"
 include ':app'
 include ':database-room'
 include ':network-module'
+include ':core'

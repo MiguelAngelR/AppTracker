@@ -1,6 +1,6 @@
-package com.mike.apptracker.domain.datasourceabstraction.local
+package com.mike.core.datasourceabstraction.local
 
-import com.mike.apptracker.domain.entity.model.PopularMovie
+import com.mike.core.entity.model.PopularMovie
 
 interface LocalMovieDataSource {
 

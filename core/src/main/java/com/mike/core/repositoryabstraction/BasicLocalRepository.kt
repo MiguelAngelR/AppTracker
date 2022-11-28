@@ -1,4 +1,4 @@
-package com.mike.apptracker.domain.repositoryabstraction
+package com.mike.core.repositoryabstraction
 
 interface BasicLocalRepository<M> {
 

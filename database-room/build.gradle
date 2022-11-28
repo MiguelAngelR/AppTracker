@@ -34,7 +34,7 @@ android {
 dependencies {
 
     //MODULES
-    implementation project(':app')
+    implementation project(':core')
 
     //Hilt dependency
     implementation "com.google.dagger:hilt-android:$rootProject.hilt_version"

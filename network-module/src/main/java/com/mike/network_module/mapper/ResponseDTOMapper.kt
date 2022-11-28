@@ -1,7 +1,6 @@
 package com.mike.network_module.mapper
 
-import androidx.lifecycle.Transformations.map
-import com.mike.apptracker.domain.entity.model.PopularMovie
+import com.mike.core.entity.model.PopularMovie
 import com.mike.network_module.dto.response.PopularMoviesNetworkResponse
 
 internal fun PopularMoviesNetworkResponse.asPopularMoviesDomainList() : List<PopularMovie> =

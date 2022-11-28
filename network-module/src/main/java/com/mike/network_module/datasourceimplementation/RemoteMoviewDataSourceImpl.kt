@@ -1,10 +1,10 @@
 package com.mike.network_module.datasourceimplementation
 
-import com.mike.apptracker.commons.Result
-import com.mike.apptracker.domain.datasourceabstraction.remote.RemoteMoviesDataSource
-import com.mike.apptracker.domain.entity.model.PopularMovie
+import com.mike.core.datasourceabstraction.remote.RemoteMoviesDataSource
+import com.mike.core.entity.model.PopularMovie
 import com.mike.network_module.mapper.asPopularMoviesDomainList
 import com.mike.network_module.service.MoviesService
+
 
 internal class RemoteMoviewDataSourceImpl(private val movieService: MoviesService) :
     RemoteMoviesDataSource {
@@ -14,7 +14,7 @@ internal class RemoteMoviewDataSourceImpl(private val movieService: MoviesServic
         page: String,
         language: String,
         scope: String
-    ): Result<List<PopularMovie>> =
+    ): com.mike.core.commons.Result<List<PopularMovie>> =
         safeApiCall {
             movieService.fetchPopularMovies(
                 authHeader = authHeader,

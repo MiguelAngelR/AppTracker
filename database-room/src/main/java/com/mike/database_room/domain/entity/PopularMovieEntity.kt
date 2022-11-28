@@ -3,9 +3,8 @@ package com.mike.database_room.domain.entity
 import androidx.annotation.Keep
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.OnConflictStrategy
 import androidx.room.PrimaryKey
-import com.mike.apptracker.domain.entity.model.PopularMovie
+import com.mike.core.entity.model.PopularMovie
 
 @Keep
 @Entity(tableName = "popular_movies")

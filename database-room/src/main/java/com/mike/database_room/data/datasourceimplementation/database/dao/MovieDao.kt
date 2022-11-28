@@ -2,7 +2,6 @@ package com.mike.database_room.data.datasourceimplementation.database.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.mike.apptracker.domain.entity.model.PopularMovie
 import com.mike.database_room.domain.entity.PopularMovieEntity
 
 @Dao

@@ -1,10 +1,10 @@
 package com.mike.apptracker.di
 
-import com.mike.apptracker.commons.IoDispatcher
-import com.mike.apptracker.data.repositoryimplementation.MovieRepositoryImpl
-import com.mike.apptracker.domain.datasourceabstraction.local.LocalMovieDataSource
-import com.mike.apptracker.domain.datasourceabstraction.remote.RemoteMoviesDataSource
-import com.mike.apptracker.domain.repositoryabstraction.MovieRepository
+import com.mike.core.commons.IoDispatcher
+import com.mike.core.datasourceabstraction.local.LocalMovieDataSource
+import com.mike.core.datasourceabstraction.remote.RemoteMoviesDataSource
+import com.mike.core.repositoryabstraction.MovieRepository
+import com.mike.core.repositoryimplementation.MovieRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RepositoryModule {
+internal object RepositoryModule {
 
     @Singleton
     @Provides
@@ -22,7 +22,8 @@ object RepositoryModule {
         @IoDispatcher coroutineDispatcher: CoroutineDispatcher,
         localMovieDataSource: LocalMovieDataSource,
         remoteMoviesDataSource: RemoteMoviesDataSource,
-    ): MovieRepository = MovieRepositoryImpl(coroutineDispatcher = coroutineDispatcher,
+    ): MovieRepository = MovieRepositoryImpl(
+        coroutineDispatcher = coroutineDispatcher,
         localMovieDataSource = localMovieDataSource,
         remoteMoviesDataSource = remoteMoviesDataSource
     )

@@ -1,6 +1,6 @@
 package com.mike.database_room.di
 
-import com.mike.apptracker.domain.datasourceabstraction.local.LocalMovieDataSource
+import com.mike.core.datasourceabstraction.local.LocalMovieDataSource
 import com.mike.database_room.data.datasourceimplementation.LocalMovieDataSourceImpl
 import com.mike.database_room.data.datasourceimplementation.database.dao.MovieDao
 import dagger.Module

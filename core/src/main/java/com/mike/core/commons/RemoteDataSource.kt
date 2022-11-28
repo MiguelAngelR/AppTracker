@@ -1,4 +1,4 @@
-package com.mike.apptracker.commons
+package com.mike.core.commons
 
 sealed class Result<out T : Any?> {
     data class Success<out T>(val data: T) : Result<T>()

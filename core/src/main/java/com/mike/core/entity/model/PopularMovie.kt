@@ -1,4 +1,4 @@
-package com.mike.apptracker.domain.entity.model
+package com.mike.core.entity.model
 
 data class PopularMovie(
     val adult: Boolean,

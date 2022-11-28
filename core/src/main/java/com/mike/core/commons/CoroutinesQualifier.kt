@@ -1,7 +1,6 @@
-package com.mike.apptracker.commons
+package com.mike.core.commons
 
 import javax.inject.Qualifier
-
 
 @Retention(AnnotationRetention.RUNTIME)
 @Qualifier

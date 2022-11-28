@@ -1,18 +1,18 @@
-package com.mike.apptracker.data.repositoryimplementation
+package com.mike.core.repositoryimplementation
 
-import com.mike.apptracker.commons.Result
-import com.mike.apptracker.domain.datasourceabstraction.local.LocalMovieDataSource
-import com.mike.apptracker.domain.datasourceabstraction.remote.RemoteMoviesDataSource
-import com.mike.apptracker.domain.entity.model.PopularMovie
-import com.mike.apptracker.domain.repositoryabstraction.MovieRepository
+import com.mike.core.commons.Result
+import com.mike.core.datasourceabstraction.local.LocalMovieDataSource
+import com.mike.core.datasourceabstraction.remote.RemoteMoviesDataSource
+import com.mike.core.entity.model.PopularMovie
+import com.mike.core.repositoryabstraction.MovieRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 
-internal class MovieRepositoryImpl(
+class MovieRepositoryImpl(
     private val coroutineDispatcher: CoroutineDispatcher,
     private val localMovieDataSource: LocalMovieDataSource,
     private val remoteMoviesDataSource: RemoteMoviesDataSource
-): MovieRepository{
+): MovieRepository {
 
     override suspend fun insert(model: PopularMovie): Long = localMovieDataSource.insert(model)
 

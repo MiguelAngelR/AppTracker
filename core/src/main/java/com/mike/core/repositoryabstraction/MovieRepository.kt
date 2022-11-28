@@ -1,7 +1,8 @@
-package com.mike.apptracker.domain.repositoryabstraction
+package com.mike.core.repositoryabstraction
 
-import com.mike.apptracker.commons.Result
-import com.mike.apptracker.domain.entity.model.PopularMovie
+import com.mike.core.commons.Result
+import com.mike.core.entity.model.PopularMovie
+import com.mike.core.repositoryabstraction.BasicLocalRepository
 
 interface MovieRepository: BasicLocalRepository<PopularMovie> {
 
@@ -16,6 +17,6 @@ interface MovieRepository: BasicLocalRepository<PopularMovie> {
         page: String,
         authHeader: String,
         scope: String
-    ) :Result<List<PopularMovie>>
+    ) : Result<List<PopularMovie>>
 
 }

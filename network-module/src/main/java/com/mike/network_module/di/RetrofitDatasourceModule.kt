@@ -1,6 +1,6 @@
 package com.mike.network_module.di
 
-import com.mike.apptracker.domain.datasourceabstraction.remote.RemoteMoviesDataSource
+import com.mike.core.datasourceabstraction.remote.RemoteMoviesDataSource
 import com.mike.network_module.datasourceimplementation.RemoteMoviewDataSourceImpl
 import com.mike.network_module.service.MoviesService
 import dagger.Module

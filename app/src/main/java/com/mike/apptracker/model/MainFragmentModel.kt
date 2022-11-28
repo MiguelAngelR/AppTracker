@@ -1,10 +1,10 @@
 package com.mike.apptracker.model
 
 import com.mike.apptracker.contract.MainFragmentContract
-import com.mike.apptracker.domain.entity.model.PopularMovie
-import com.mike.apptracker.domain.repositoryabstraction.MovieRepository
-import com.mike.apptracker.commons.Result
+import com.mike.core.entity.model.PopularMovie
+import com.mike.core.repositoryabstraction.MovieRepository
 import javax.inject.Inject
+import com.mike.core.commons.Result
 
 class MainFragmentModel @Inject constructor(
     private val repository: MovieRepository

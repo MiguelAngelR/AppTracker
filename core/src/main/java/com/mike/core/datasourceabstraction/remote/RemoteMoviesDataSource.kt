@@ -1,8 +1,8 @@
-package com.mike.apptracker.domain.datasourceabstraction.remote
+package com.mike.core.datasourceabstraction.remote
 
-import com.mike.apptracker.commons.RemoteDataSource
-import com.mike.apptracker.commons.Result
-import com.mike.apptracker.domain.entity.model.PopularMovie
+import com.mike.core.commons.RemoteDataSource
+import com.mike.core.commons.Result
+import com.mike.core.entity.model.PopularMovie
 
 interface RemoteMoviesDataSource : RemoteDataSource {
 

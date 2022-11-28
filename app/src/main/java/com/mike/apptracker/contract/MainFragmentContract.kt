@@ -1,7 +1,7 @@
 package com.mike.apptracker.contract
 
-import com.mike.apptracker.commons.Result
-import com.mike.apptracker.domain.entity.model.PopularMovie
+import com.mike.core.entity.model.PopularMovie
+import com.mike.core.commons.Result
 
 interface MainFragmentContract {
 

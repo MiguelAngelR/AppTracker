@@ -1,8 +1,7 @@
 package com.mike.database_room.data.datasourceimplementation
 
-import androidx.room.Dao
-import com.mike.apptracker.domain.datasourceabstraction.local.LocalMovieDataSource
-import com.mike.apptracker.domain.entity.model.PopularMovie
+import com.mike.core.datasourceabstraction.local.LocalMovieDataSource
+import com.mike.core.entity.model.PopularMovie
 import com.mike.database_room.data.datasourceimplementation.database.dao.MovieDao
 import com.mike.database_room.domain.entity.asPopularMovie
 import com.mike.database_room.domain.entity.asPopularMovieEntity

@@ -1,6 +1,6 @@
 package com.mike.network_module.di
 
-import com.mike.apptracker.BuildConfig
+import com.mike.core.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
