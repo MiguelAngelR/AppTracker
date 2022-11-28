@@ -15,6 +15,7 @@ interface MainFragmentContract {
     }
 
     interface MainFragmentModel{
+        suspend fun storePopularMovies(listPopularMovies: List<PopularMovie>) : Boolean
         suspend fun getPopularMoviesFromRepository(language: String, page: String, auth: String, scope: String): Result<List<PopularMovie>>
     }
 

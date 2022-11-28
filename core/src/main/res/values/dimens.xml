@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <!--Padding & Margin-->
+    <dimen name="dim_text">15dp</dimen>
     <dimen name="dim_padding_tiny">2dp</dimen>
     <dimen name="dim_padding_very_small">4dp</dimen>
     <dimen name="dim_padding_small">8dp</dimen>

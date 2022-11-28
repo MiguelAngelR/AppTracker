@@ -12,7 +12,7 @@ internal interface MoviesService {
 
     @GET("$API_RELATIVE_URL/movie/popular")
     suspend fun fetchPopularMovies(
-        @Header("Authorization") authHeader: String,
+        @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: String
     ) : PopularMoviesNetworkResponse

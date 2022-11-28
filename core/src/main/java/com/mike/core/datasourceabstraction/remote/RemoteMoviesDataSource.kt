@@ -7,7 +7,7 @@ import com.mike.core.entity.model.PopularMovie
 interface RemoteMoviesDataSource : RemoteDataSource {
 
     suspend fun fetchPopularMovies(
-        authHeader: String,
+        apiKey: String,
         page: String,
         language: String,
         scope: String

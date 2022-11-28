@@ -40,6 +40,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures { viewBinding true }
 }
 
 dependencies {
@@ -53,6 +54,11 @@ dependencies {
 
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
+    //firebase
+    api platform('com.google.firebase:firebase-bom:31.1.0')
+    api 'com.google.firebase:firebase-crashlytics-ktx'
+    api 'com.google.firebase:firebase-analytics-ktx'
+    api 'com.google.firebase:firebase-perf-ktx'
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'

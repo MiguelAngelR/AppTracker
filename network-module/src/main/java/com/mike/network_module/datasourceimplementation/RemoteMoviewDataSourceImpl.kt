@@ -4,6 +4,7 @@ import com.mike.core.datasourceabstraction.remote.RemoteMoviesDataSource
 import com.mike.core.entity.model.PopularMovie
 import com.mike.network_module.mapper.asPopularMoviesDomainList
 import com.mike.network_module.service.MoviesService
+import com.mike.core.commons.Result
 
 
 internal class RemoteMoviewDataSourceImpl(private val movieService: MoviesService) :
@@ -14,10 +15,10 @@ internal class RemoteMoviewDataSourceImpl(private val movieService: MoviesServic
         page: String,
         language: String,
         scope: String
-    ): com.mike.core.commons.Result<List<PopularMovie>> =
+    ): Result<List<PopularMovie>> =
         safeApiCall {
             movieService.fetchPopularMovies(
-                authHeader = authHeader,
+                apiKey = authHeader,
                 language = language,
                 page = page
             ).asPopularMoviesDomainList()

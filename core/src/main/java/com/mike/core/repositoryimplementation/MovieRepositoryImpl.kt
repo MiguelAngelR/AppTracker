@@ -31,11 +31,11 @@ class MovieRepositoryImpl(
     override suspend fun fetchPopularMovies(
         language: String,
         page: String,
-        authHeader: String,
+        apiKey: String,
         scope: String
     ): Result<List<PopularMovie>> = withContext(coroutineDispatcher) {
         remoteMoviesDataSource.fetchPopularMovies(
-            authHeader = authHeader,
+            apiKey = apiKey,
             page = page,
             scope = scope,
             language = language

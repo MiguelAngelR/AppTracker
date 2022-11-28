@@ -15,7 +15,7 @@ interface MovieRepository: BasicLocalRepository<PopularMovie> {
     suspend fun fetchPopularMovies(
         language: String,
         page: String,
-        authHeader: String,
+        apiKey: String,
         scope: String
     ) : Result<List<PopularMovie>>
 
