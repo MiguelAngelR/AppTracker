@@ -5,14 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.mike.apptracker.R
 import com.mike.apptracker.contract.MainFragmentContract
 import com.mike.apptracker.databinding.FragmentMainBinding
+import com.mike.apptracker.ui.adapters.PopularMovieAdapter
 import com.mike.core.commons.AppTrackerDialogBuilder
+import com.mike.core.commons.ValidationLifeCycle
 import com.mike.core.entity.model.PopularMovie
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.NonCancellable.cancel
@@ -33,6 +37,9 @@ class MainFragment: Fragment(), MainFragmentContract.MainFragmentView {
 
     private lateinit var errorDialog: AlertDialog
 
+
+    private var adapterCategories: PopularMovieAdapter? = PopularMovieAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,12 +55,15 @@ class MainFragment: Fragment(), MainFragmentContract.MainFragmentView {
     }
 
     private fun subscribeUI() {
-        viewLifecycleOwner.lifecycleScope.launch{
-            presenter.getPopularMovies()
-        }
+        presenter.getPopularMovies()
     }
 
     private fun initUI() {
+
+        binding.rvCategoriesList.adapter = adapterCategories
+        val manager = GridLayoutManager(activity,4, GridLayoutManager.HORIZONTAL, false)
+        binding.rvCategoriesList.layoutManager = manager
+
         errorDialog = AppTrackerDialogBuilder(requireContext()).setDialogType(AppTrackerDialogBuilder.DialogType.WARNING)
                 .setTitle(getString(com.mike.core.R.string.error))
                 .setMessage(getString(com.mike.core.R.string.sync_again))
@@ -64,19 +74,14 @@ class MainFragment: Fragment(), MainFragmentContract.MainFragmentView {
                     it?.hide()
                 }
                 .create()
-
-
-
-        errorDialog.show()
-
     }
 
-    override fun showPopularMovies(popularMovie: MutableList<PopularMovie>) {
-        val popularMovies = popularMovie
-        Log.e("DATOS","Los datos obtenidos, tamaño ${popularMovie.size}")
+    override fun showPopularMovies(popularMovies: MutableList<PopularMovie>) {
+        Log.e("DATOS","Los datos obtenidos, tamaño ${popularMovies.size}")
+        adapterCategories?.submitList(popularMovies)
     }
 
-    override fun showErro(message: String) {
+    override fun showError(message: String) {
         Log.e("DATOS","Los datos obtenidos, tamaño ${message}")
     }
 

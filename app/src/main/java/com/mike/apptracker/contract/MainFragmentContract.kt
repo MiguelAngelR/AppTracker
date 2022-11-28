@@ -7,11 +7,11 @@ interface MainFragmentContract {
 
     interface MainFragmentView{
         fun showPopularMovies(popularMovie: MutableList<PopularMovie>)
-        fun showErro(message: String)
+        fun showError(message: String)
     }
 
     interface MainFragmentPresenter{
-        suspend fun getPopularMovies()
+        fun getPopularMovies()
     }
 
     interface MainFragmentModel{
