@@ -8,6 +8,8 @@ interface MovieRepository: BasicLocalRepository<PopularMovie> {
 
     ///DATABASE METHODS
 
+    suspend fun findAll(): List<PopularMovie>?
+
     suspend fun findById(id: String): PopularMovie?
 
     // REMOTE METHODS

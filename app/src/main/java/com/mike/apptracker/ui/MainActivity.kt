@@ -42,8 +42,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
-
         // Set up an OnPreDrawListener to the root view.
         val content = findViewById<View>(android.R.id.content)
         content.viewTreeObserver.run {
@@ -51,13 +49,8 @@ class MainActivity : AppCompatActivity() {
                 // Check if the initial data is ready.
                 override fun onPreDraw(): Boolean {
                     // Check if the initial data is ready.
-                    findNavController(R.id.nav_host_container).run {
-                        graph = navInflater.inflate(R.navigation.app_nav_graph)
-                        navigate(
-                            R.id.mainFragment
-                        )
-                    }
                     content.viewTreeObserver.removeOnPreDrawListener(this)
+                    findNavController(R.id.nav_host_container).run {navigate(R.id.mainFragment) }
                     return true
                 }
             })

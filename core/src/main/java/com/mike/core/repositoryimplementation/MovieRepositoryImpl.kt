@@ -26,6 +26,8 @@ class MovieRepositoryImpl(
 
     override suspend fun deleteAll() = localMovieDataSource.deleteAll()
 
+    override suspend fun findAll(): List<PopularMovie>? = localMovieDataSource.findAllPopularMovies()
+
     override suspend fun findById(id: String): PopularMovie? = localMovieDataSource.findById(id)
 
     override suspend fun fetchPopularMovies(

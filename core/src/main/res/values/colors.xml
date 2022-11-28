@@ -6,9 +6,9 @@
     <color name="white">#ffffff</color>
 
     <!--App Colors-->
-    <color name="color_primary">#607D8B</color>
-    <color name="color_primary_variant">#CFD8DC</color>
-    <color name="color_primary_dark">#455A64</color>
+    <color name="color_primary">#004b6b</color>
+    <color name="color_primary_variant">#417799</color>
+    <color name="color_primary_dark">#002340</color>
     <color name="color_primary_darker">#455A64</color>
     <color name="color_secondary">#AFB42B</color>
     <color name="color_secondary_variant">#CDDC39</color>
@@ -38,9 +38,15 @@
     <color name="color_warning">#EDB83F</color>
     <color name="color_error">#CD474C</color>
     <color name="color_info">#6293E5</color>
-    <color name="color_ask">#651c32</color>
+    <color name="color_ask">#5055B1</color>
     <color name="color_success">#009d63</color>
 
     <!--Text Input Colors-->
     <color name="color_disabled">#F2F2F2</color>
+
+
+    <color name="main_fragment">#004b6b</color>
+    <color name="main_fragment_variant">#417799</color>
+    <color name="main_fragment_dark">#002340</color>
+    <color name="main_fragment_darker">#001527</color>
 </resources>

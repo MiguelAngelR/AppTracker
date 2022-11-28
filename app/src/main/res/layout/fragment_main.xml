@@ -5,29 +5,73 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/color_background"
-    tools:context=".ui.fragments.MainFragment"
-    android:padding="@dimen/dim_padding_big">
+    tools:context=".ui.fragments.MainFragment">
+
+    <View
+        android:id="@+id/v_header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/gradient_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_wave"
+        android:src="@drawable/ic_wave_login"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_header"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:elevation="-1dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/iv_wave_shadow"
+        android:src="@drawable/ic_wave_sign_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_header"/>
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tv_title"
-        android:textColor="@color/color_text_accent_darker"
+        android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="@dimen/dim_text_title"
-        android:layout_width="match_parent"
+        android:drawableTint="@color/white"
+        android:drawableEnd="@drawable/ic_movies"
+        android:layout_margin="@dimen/dim_margin"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/most_popular_movies_tittle"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_get_movies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/request_movies"
+        android:layout_marginTop="@dimen/dim_margin"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        app:layout_constraintBottom_toTopOf="@id/rv_movies"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvCategoriesList"
+        android:id="@+id/rv_movies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="@dimen/dim_margin"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:layout_margin="@dimen/dim_margin"
+        app:layout_constraintTop_toBottomOf="@id/bt_get_movies"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 

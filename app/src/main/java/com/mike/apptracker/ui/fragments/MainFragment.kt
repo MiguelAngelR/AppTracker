@@ -1,6 +1,8 @@
 package com.mike.apptracker.ui.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +19,10 @@ import com.mike.apptracker.databinding.FragmentMainBinding
 import com.mike.apptracker.ui.adapters.PopularMovieAdapter
 import com.mike.core.commons.AppTrackerDialogBuilder
 import com.mike.core.commons.ValidationLifeCycle
+import com.mike.core.commons.setSafeOnClickListener
 import com.mike.core.entity.model.PopularMovie
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.NonCancellable.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -31,39 +35,30 @@ class MainFragment: Fragment(), MainFragmentContract.MainFragmentView {
 
     @Inject
     lateinit var presenter : MainFragmentContract.MainFragmentPresenter
-
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-
     private lateinit var errorDialog: AlertDialog
-
-
-    private var adapterCategories: PopularMovieAdapter? = PopularMovieAdapter()
+    private var adapterMovies: PopularMovieAdapter? = PopularMovieAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
+        initUI()
+        subscribeUI()
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initUI()
-        subscribeUI()
-    }
 
     private fun subscribeUI() {
-        presenter.getPopularMovies()
+
     }
 
     private fun initUI() {
-
-        binding.rvCategoriesList.adapter = adapterCategories
+        binding.rvMovies.adapter = adapterMovies
         val manager = GridLayoutManager(activity,4, GridLayoutManager.HORIZONTAL, false)
-        binding.rvCategoriesList.layoutManager = manager
-
+        binding.rvMovies.layoutManager = manager
         errorDialog = AppTrackerDialogBuilder(requireContext()).setDialogType(AppTrackerDialogBuilder.DialogType.WARNING)
                 .setTitle(getString(com.mike.core.R.string.error))
                 .setMessage(getString(com.mike.core.R.string.sync_again))
@@ -74,15 +69,41 @@ class MainFragment: Fragment(), MainFragmentContract.MainFragmentView {
                     it?.hide()
                 }
                 .create()
+
+
+        Toast.makeText(requireContext(),"Obtain datos:", Toast.LENGTH_LONG).show()
+
+        binding.btGetMovies.setSafeOnClickListener {
+            presenter.getPopularMovies()
+        }
     }
 
     override fun showPopularMovies(popularMovies: MutableList<PopularMovie>) {
         Log.e("DATOS","Los datos obtenidos, tamaño ${popularMovies.size}")
-        adapterCategories?.submitList(popularMovies)
+        Toast.makeText(requireContext(),"Obtain datos: ${popularMovies.size}", Toast.LENGTH_LONG).show()
+        checkIfFragmentAttached {
+            adapterMovies?.submitList(popularMovies)
+        }
+    }
+
+    fun checkIfFragmentAttached(operation: Context.() -> Unit) {
+        if (isAdded && context != null) {
+            operation(requireContext())
+        }
     }
 
     override fun showError(message: String) {
-        Log.e("DATOS","Los datos obtenidos, tamaño ${message}")
+        checkIfFragmentAttached {
+            Log.e("ERROR","Los datos obtenidos, tamaño $message")
+            errorDialog.show()
+        }
+    }
+
+    override fun showInfor(meesage: String) {
+        Toast.makeText(requireActivity(), "Nuevo mensaje", Toast.LENGTH_SHORT).show()
+        checkIfFragmentAttached {
+            Log.e("ERROR","Los datos obtenidos, tamaño ")
+        }
     }
 
     override fun onDestroy() {

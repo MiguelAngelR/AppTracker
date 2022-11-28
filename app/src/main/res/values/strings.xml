@@ -4,4 +4,6 @@
     <string name="peliculas_populares_del_momento">Peliculas populares del momento</string>
     <string name="most_popular_movies_tittle">Peliculas populares del momento</string>
     <string name="error">Error</string>
+    <string name="storage_error">"Error al almacenar las peliculas por favor intenta nuevamente"</string>
+    <string name="request_movies">Consultar preguntas</string>
 </resources>

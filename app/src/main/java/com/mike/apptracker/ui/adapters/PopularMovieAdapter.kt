@@ -1,5 +1,6 @@
 package com.mike.apptracker.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -20,13 +21,11 @@ class PopularMovieAdapter() : ListAdapter<PopularMovie, PopularMovieAdapter.View
     }
 
     class ViewHolder private constructor(val binding: PopularMovieItemBinding) : RecyclerView.ViewHolder(binding.root){
-
         fun bind(item: PopularMovie) {
             binding.ivMovie.setImageResource(R.drawable.app_icon)
-            binding.tvMovieTitle.setText(item.title)
-
+            binding.tvMovieTitle.text = item.title
+            Log.e("Adapter", "${item.id}")
         }
-
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)

@@ -1,7 +1,7 @@
 package com.mike.apptracker.presenter
 
-import android.provider.Settings.Global
 import android.util.Log
+import com.mike.apptracker.R
 import com.mike.apptracker.contract.MainFragmentContract
 import com.mike.core.entity.model.PopularMovie
 import kotlinx.coroutines.*
@@ -14,34 +14,41 @@ class MainFragmentPresenter @Inject constructor(
     private val coroutineScope: CoroutineScope,
 ) : MainFragmentContract.MainFragmentPresenter {
 
-    override fun getPopularMovies() {
-        //TODO: Obtain dinamically token to realize request also implement UI design to change page manually
-        Log.e("Solicitudi","Realizando solicitud")
-        GlobalScope.launch {
-            val res = withContext(Dispatchers.IO){
-                mainFragmentModel.getPopularMoviesFromRepository(
-                    "US-es",
-                    "1",
-                    "704f89cbcd26cdb80a4ab176b8955ae9",
-                    ""
-                )
-            }
+    private val TAG = "MainFragment"
 
-            when (res) {
-                is Result.Error -> {
-                    Log.e("Solicitudi","Error en la solicitud ${res.exception.message}")
-                    Log.e("Solicitudi","Error en la solicitud ${res.exception}")
-                    Log.e("Solicitudi","Error en la solicitud ${res}")
-                    res.exception.message?.let { mainFragmentView.showError(it) }
-                    false
+    override fun getPopularMovies() {
+        mainFragmentView.showInfor("nUEVO MENSAJE")
+        //TODO: Obtain dinamically token to realize request also implement UI design to change page manually
+        GlobalScope.launch(Dispatchers.Main){
+            when(mainFragmentModel.dataBasePopulated()){
+                true -> {
+                    Log.e(TAG,"Database prepopulated")
+                    mainFragmentView.showPopularMovies(mainFragmentModel.findAllPopularMovies().toMutableList())
                 }
-                is Result.Success -> {
-                    if(mainFragmentModel.storePopularMovies(res.data as MutableList<PopularMovie>)){
-                        mainFragmentView.showPopularMovies(res.data as MutableList<PopularMovie>)
-                    }else{
-                        mainFragmentView.showError("Error al almacenar las peliculas por favor intenta nuevamente")
+                false -> {
+                    Log.e(TAG,"Peticion a API")
+                    val res = withContext(Dispatchers.IO){
+                        mainFragmentModel.getPopularMoviesFromRepository(
+                            "US-es",
+                            "1",
+                            "704f89cbcd26cdb80a4ab176b8955ae9",
+                            ""
+                        )
                     }
-                    true
+                    when (res) {
+                        is Result.Error -> {
+                            Log.e(TAG,"Result failed")
+                            res.exception.message?.let { mainFragmentView.showError(it) }
+                        }
+                        is Result.Success -> {
+                            Log.e(TAG,"Result success")
+                            if(mainFragmentModel.storePopularMovies(res.data as MutableList<PopularMovie>)){
+                                mainFragmentView.showPopularMovies(res.data as MutableList<PopularMovie>)
+                            }else{
+                                mainFragmentView.showError("Error al almacenar datos")
+                            }
+                        }
+                    }
                 }
             }
         }

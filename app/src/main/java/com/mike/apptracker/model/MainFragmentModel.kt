@@ -19,11 +19,15 @@ class MainFragmentModel @Inject constructor(
             scope = scope
         )
 
-
     override suspend fun storePopularMovies(list:List<PopularMovie>): Boolean {
         Log.e("almacenando  data", "Almacenando informacion en la BD")
         repository.insert(list)
         return true
     }
+
+    override suspend fun dataBasePopulated(): Boolean = repository.findAll()?.isEmpty() != true
+
+
+    override suspend fun findAllPopularMovies(): List<PopularMovie> = repository.findAll()!!
 
 }

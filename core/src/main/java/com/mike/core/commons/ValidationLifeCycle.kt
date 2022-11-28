@@ -8,4 +8,5 @@ object ValidationLifeCycle {
         return !actiity.isFinishing && !actiity.isDestroyed
     }
 
+
 }
